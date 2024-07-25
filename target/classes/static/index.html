@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Monitoring</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>Weather Monitoring</h1>
+<div>
+    <label for="locationInput">Enter Location:</label>
+    <input type="text" id="locationInput" placeholder="e.g., New York">
+    <button onclick="fetchWeather()">Get Weather</button>
+</div>
+<div>
+    <label for="unitSelect">Select Temperature Unit:</label>
+    <select id="unitSelect" onchange="updateTemperatureUnit()">
+        <option value="celsius">Celsius</option>
+        <option value="kelvin">Kelvin</option>
+    </select>
+</div>
+<div id="currentWeather">Enter a location to get the current weather...</div>
+<h2>Weather Summary</h2>
+<div id="weatherSummary">Enter a location to get the weather summary...</div>
+<video autoplay muted loop id="backgroundVideo">
+    <source src="media/64767-510850921_medium.mp4" type="video/mp4">
+</video>
+<script src="script.js"></script>
+</body>
+</html>
