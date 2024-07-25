@@ -1,11 +1,18 @@
 # Weather Monitoring Application
 
 ## Overview
-This project is a weather monitoring application that fetches current weather data and displays weather summaries for specified locations. It uses Spring Boot for the backend, PostgreSQL as the database, and Docker for containerization.
+This project is a weather monitoring application that fetches current weather data and displays weather summaries for specified locations. It uses Spring Boot for the backend and PostgreSQL as the database.
 
 ## Prerequisites
-- Docker
-- Docker Compose (if using the `docker-compose.yml` file)
+- Java 11
+- PostgreSQL
+- Maven
+
+## Tech Stack
+- **Backend Framework**: Spring Boot
+- **Database**: PostgreSQL
+- **Frontend**: HTML, CSS, JavaScript
+- **Build Tool**: Maven
 
 ## Project Structure
 ```
@@ -33,8 +40,6 @@ Zeotap Assignment Application-2/
 │   │           ├── script.js
 │   │           └── style.css
 ├── .gitattributes
-├── Dockerfile
-├── docker-compose.yml
 ├── mvnw
 ├── mvnw.cmd
 ├── pom.xml
@@ -43,75 +48,63 @@ Zeotap Assignment Application-2/
 
 ## Setting Up the Project
 
-### Using Docker Compose (Recommended)
-1. Ensure Docker is installed and running on your machine.
-2. Navigate to the project directory.
-3. Run the following command to build and start the application:
-   ```sh
-   docker-compose up --build
-   ```
-
-### Building and Running the Docker Image Manually
-1. Navigate to the project directory.
-2. Build the Docker image:
-   ```sh
-   docker build -t weather-monitoring-app .
-   ```
-3. Run the Docker container:
-   ```sh
-   docker run -d -p 8080:8080 weather-monitoring-app
-   ```
-
 ### Local Development
-If you prefer to run the application locally without Docker, follow these steps:
-
 1. Ensure PostgreSQL is installed and running. Create a database named `weatherdb`.
-2. Update the `application.properties` file with your database credentials.
+
+2. Update the `application.properties` file with your database credentials:
+    ```properties
+    spring.datasource.url=jdbc:postgresql://localhost:5432/weatherdb
+    spring.datasource.username=<your-username>
+    spring.datasource.password=<your-password>
+    spring.jpa.hibernate.ddl-auto=update
+    spring.jpa.show-sql=true
+    spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+    ```
+
 3. Build the project using Maven:
-   ```sh
-   ./mvnw clean install
-   ```
+    ```bash
+    ./mvnw clean install
+    ```
+
 4. Run the application:
-   ```sh
-   ./mvnw spring-boot:run
-   ```
+    ```bash
+    ./mvnw spring-boot:run
+    ```
 
 ## Accessing the Application
-Open your browser and navigate to `http://localhost:8080`.
+Open your browser and navigate to [http://localhost:8080](http://localhost:8080).
 
 ## API Endpoints
 - **GET /weather/current?location={location}**: Fetches the current weather for the specified location.
 - **GET /weather/summary?location={location}**: Fetches the weather summary for the specified location.
 
-## Design Choices
-- **Backend**: Spring Boot
-- **Database**: PostgreSQL
-- **Frontend**: Plain HTML, CSS, JavaScript
-- **Containerization**: Docker
+### Brief on Endpoints
+- **Current Weather Endpoint**: This endpoint fetches the real-time weather information for a given location, including temperature, humidity, wind speed, etc.
+- **Weather Summary Endpoint**: This endpoint provides a summary of the weather for a given location, potentially including historical data and trends.
 
 ## Dependencies
 - Java 11
 - Spring Boot
 - PostgreSQL
-- Docker
 - Maven
 
 ## Build Instructions
 1. Clone the repository:
-   ```sh
-   git clone <your-github-repo-url>
-   cd Zeotap Assignment Application-2
-   ```
+    ```bash
+    git clone <your-github-repo-url>
+    cd Zeotap Assignment Application-2
+    ```
+
 2. Build the project using Maven:
-   ```sh
-   ./mvnw clean install
-   ```
+    ```bash
+    ./mvnw clean install
+    ```
 
 ## Running Tests
 To run the tests locally:
-```sh
+```bash
 ./mvnw test
 ```
 
 ## Contact
-For any questions or issues, please contact (mailto:maanaskanwar88@gmail.com).
+For any questions or issues, please contact [maanaskanwar88@gmail.com](mailto:maanaskanwar88@gmail.com).
